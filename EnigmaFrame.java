@@ -33,8 +33,6 @@ public class EnigmaFrame extends JFrame {
         outerBox = new JComboBox<>(rotorOptions);
 
         JPanel header = new JPanel();
-        startingPos = new JTextField();
-        
 
         header.setLayout(new FlowLayout());
         header.add(labelInner);
@@ -65,6 +63,7 @@ public class EnigmaFrame extends JFrame {
         JLabel outputLabel = new JLabel("Output");
         outputLabel.setPreferredSize(new Dimension(60, 20));
         outputText = new JTextArea(3, 50);
+        outputText.setEditable(false);
 
         JPanel outputRow = new JPanel(new BorderLayout(5,5));
         outputRow.add(outputLabel, BorderLayout.WEST);

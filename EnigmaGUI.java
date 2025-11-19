@@ -6,11 +6,11 @@ public class EnigmaGUI {
         frame.decryptBtn.addActionListener(e -> processChoices(frame, false));
     }
     public static void processChoices(EnigmaFrame frame, boolean isEncrypt){
-        int inner = frame.innerBox.getSelectedItem(); 
-        int middle = frame.middleBox.getSelectedItem();
-        int outer = frame.outerBox.getSelectedItem();
-        String startPos = frame.startingPos.getText();    
-        String input = frame.inputText.getText();
+        int inner = (Integer)frame.innerBox.getSelectedItem(); 
+        int middle = (Integer)frame.middleBox.getSelectedItem();
+        int outer = (Integer)frame.outerBox.getSelectedItem();
+        String startPos = frame.startingPos.getText().toUpperCase();    
+        String input = frame.inputText.getText().toUpperCase();
         Enigma enigma = new Enigma(inner, middle, outer, startPos);
 
         if(isEncrypt){
