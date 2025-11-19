@@ -1,29 +1,39 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class EnigmaFrame {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setSize(600, 400);
-        frame.setTitle("Enigma GUI");
+public class EnigmaFrame extends JFrame {
+    public JComboBox<Integer> innerBox;
+    public JComboBox<Integer> middleBox;
+    public JComboBox<Integer> outerBox;
+   
+    public JButton encryptBtn;
+    public JButton decryptBtn;
+   
+    public JTextField startingPos;
+    public JTextArea inputText;
+    public JTextArea outputText;
+
+    public EnigmaFrame() {
+        setSize(600, 400);
+        setTitle("Enigma GUI");
 
         JLabel labelInner = new JLabel("Inner");
         JLabel labelMiddle = new JLabel("Middle");
         JLabel labelOuter = new JLabel("Outer");
 
         JLabel initialPos = new JLabel("Initial Positions");
-        JTextField startingPos = new JTextField();
-        int charLimit = 3;
+        startingPos = new JTextField(3);
 
-        JButton encryptBtn = new JButton("Encrypt");
-        JButton decryptBtn = new JButton("Decrypt");
+        encryptBtn = new JButton("Encrypt");
+        decryptBtn = new JButton("Decrypt");
 
         Integer[] rotorOptions = {1, 2, 3, 4, 5};
-        JComboBox<Integer> innerBox = new JComboBox<>(rotorOptions);
-        JComboBox<Integer> middleBox = new JComboBox<>(rotorOptions);
-        JComboBox<Integer> outerBox = new JComboBox<>(rotorOptions);
+        innerBox = new JComboBox<>(rotorOptions);
+        middleBox = new JComboBox<>(rotorOptions);
+        outerBox = new JComboBox<>(rotorOptions);
 
         JPanel header = new JPanel();
+        startingPos = new JTextField();
         
 
         header.setLayout(new FlowLayout());
@@ -46,7 +56,7 @@ public class EnigmaFrame {
 
         JLabel inputLabel = new JLabel("Input");
         inputLabel.setPreferredSize(new Dimension(60, 20));
-        JTextArea inputText = new JTextArea(3, 50);
+        inputText = new JTextArea(3, 50);
 
         JPanel inputRow = new JPanel(new BorderLayout(5,5));
         inputRow.add(inputLabel, BorderLayout.WEST);
@@ -54,7 +64,7 @@ public class EnigmaFrame {
 
         JLabel outputLabel = new JLabel("Output");
         outputLabel.setPreferredSize(new Dimension(60, 20));
-        JTextArea outputText = new JTextArea(3, 50);
+        outputText = new JTextArea(3, 50);
 
         JPanel outputRow = new JPanel(new BorderLayout(5,5));
         outputRow.add(outputLabel, BorderLayout.WEST);
@@ -64,12 +74,12 @@ public class EnigmaFrame {
         inputBoxes.add(Box.createVerticalStrut(10));
         inputBoxes.add(outputRow);
 
-        frame.add(header, BorderLayout.NORTH);
-        frame.add(inputBoxes, BorderLayout.CENTER);
-        frame.pack();
+        add(header, BorderLayout.NORTH);
+        add(inputBoxes, BorderLayout.CENTER);
+        pack();
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
     }
 
